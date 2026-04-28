@@ -1,21 +1,20 @@
-
+import { useState } from "react";
+import { PostItem } from "./PostItem";
 export default function Feed() {
+
+    const [posts, setPosts] = useState([
+        {id:1, title: 'Java Script', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'},
+        {id:2, title: 'React', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'},
+        {id:3, title: 'C++', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'},
+        {id:4, title: 'Python', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'}
+    ]);
+
     return (
         <div className="container">
-            <h1 style={{ marginTop: '50px' }}>This is the FEED page</h1>
-            <p>The routing is working! You are now on the /feed route.</p>
-            <div className="feed-container">
-                <div className="post">
-                    <div className="post-content">
-                        <p>Java Script</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.</p>
-
-                    </div>
-                    <div className="post-btn">
-                        <button>Delete</button>
-                    </div>
-                </div>
-            </div>
+            {posts.map(post => (
+                <PostItem key={post.id} post={post} />
+            ))}
         </div>
     );
 }
+
