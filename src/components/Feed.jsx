@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { PostItem } from "./PostItem";
+import PostList from "./PostList";
 export default function Feed() {
 
     const [posts, setPosts] = useState([
@@ -9,11 +10,22 @@ export default function Feed() {
         {id:4, title: 'Python', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.'}
     ]);
 
+    const [title, setTitle] = useState("fsd");
+
+    const addNewPost = (e) => {
+
+    }
+
+
     return (
         <div className="container">
-            {posts.map(post => (
-                <PostItem key={post.id} post={post} />
-            ))}
+            <form action="">
+                <input value={title}
+                onChange={e => setTitle(e.target.value)} type="text" placeholder="Title"/>
+                <input type="text" placeholder="Content"/>
+                <button>Create post</button>
+            </form>
+            <PostList posts={posts} title="My feed"/>
         </div>
     );
 }
